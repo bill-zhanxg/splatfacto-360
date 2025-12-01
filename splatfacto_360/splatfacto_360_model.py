@@ -135,8 +135,7 @@ class Splatfacto360Model(SplatfactoModel):
             colors_crop = torch.sigmoid(colors_crop)
             sh_degree_to_use = None
 
-        # TODO: novel view should be rendered with a perspective camera
-        spherical = True  # camera.camera_type == CameraType.EQUIRECTANGULAR
+        spherical = camera.camera_type == CameraType.EQUIRECTANGULAR
 
         render_outputs = render(
             viewpoint_camera=colmap_camera,
